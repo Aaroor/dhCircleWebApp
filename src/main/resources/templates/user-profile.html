@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragment/general :: baseHead(~{::title}, ~{::link})">
+<title>Dhcircle | Profile</title>
+<!-- placeholder for additional links -->
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" type="text/css" /> -->
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css" type="text/css" /> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+</head>
+
+<body class="loading"
+	data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+	<!-- Begin page -->
+	<div class="wrapper">
+		<!-- ========== Left Sidebar Start ========== -->
+		<div class="left-side-menu"
+			th:replace="fragment/general ::sideMenu(${'profile'},${''})">
+		</div>
+		<!-- Left Sidebar End -->
+
+		<!-- ============================================================== -->
+		<!-- Start Page Content here -->
+		<!-- ============================================================== -->
+
+		<div class="content-page">
+			<div class="content">
+				<!-- Topbar Start -->
+				<div class="navbar-custom" th:replace="fragment/general ::topBar">
+
+				</div>
+				<!-- end Topbar -->
+
+				<!-- Start Content-->
+				<div class="container-fluid">
+					<!-- start page title -->
+					<div class="row">
+						<div class="col-12">
+							<div class="page-title-box">
+								<div class="page-title-right">
+									<ol class="breadcrumb m-0">
+										<li class="breadcrumb-item"><a th:href="@{/admin/home}"
+											href="#">Dashborad</a></li>
+										<li class="breadcrumb-item"><a th:href="@{/registration}"
+											href="#">Create User</a></li>
+										<li class="breadcrumb-item active">User List</li>
+									</ol>
+								</div>
+								<h4 class="page-title">My Profile</h4>
+							</div>
+						</div>
+					</div>
+					<!-- end page title -->
+
+					<!-- start table -->
+					<div class="row">
+                            <div class="col-sm-12">
+                                <!-- Profile -->
+                                <div class="card bg-primary">
+                                    <div class="card-body profile-user-box">
+
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <div class="media">
+                                                    <span class="float-left m-2 mr-4"><img th:src="@{/assets/images/users/avatar-2.jpg}" src="#" style="height: 100px;" alt="" class="rounded-circle img-thumbnail"></span>
+                                                    <div class="media-body">
+
+                                                        <h4 class="mt-1 mb-1 text-white" th:text="${#authentication.getPrincipal().firstName+' '+#authentication.getPrincipal().lastName}"></h4>
+                                                        <p class="font-13 text-white-50" th:each="authority : ${#authentication.getAuthorities()}" th:text="${#strings.capitalizeWords(#strings.toLowerCase(authority.getAuthority()))}"> Authorised Brand Seller</p>
+
+                                                        <ul class="mb-0 list-inline text-light">
+                                                            <li class="list-inline-item mr-3">
+                                                                <h5 class="mb-1">$ 25,184</h5>
+                                                                <p class="mb-0 font-13 text-white-50">Total Courses</p>
+                                                            </li>
+                                                            <li class="list-inline-item">
+                                                                <h5 class="mb-1">5482</h5>
+                                                                <p class="mb-0 font-13 text-white-50">Number of Orders</p>
+                                                            </li>
+                                                        </ul>
+                                                    </div> <!-- end media-body-->
+                                                </div>
+                                            </div> <!-- end col-->
+
+                                            <div class="col-sm-4">
+                                                <div class="text-center mt-sm-0 mt-3 text-sm-right">
+                                                    <a href="#" class="btn btn-light">
+                                                        <i class="mdi mdi-account-edit mr-1"></i> Edit Profile
+                                                    </a>
+                                                    <br/><br/>
+                                                    <a href="#" class="btn btn-light">
+                                                        <i class="fa fa-key" aria-hidden="true"></i> Change Password
+                                                    </a>
+                                                </div>
+                                            </div> <!-- end col-->
+                                        </div> <!-- end row -->
+
+                                    </div> <!-- end card-body/ profile-user-box-->
+                                </div><!--end profile/ card -->
+                            </div> <!-- end col-->
+                        </div>
+                        <!-- end row -->
+
+
+                        <div class="row">
+                            
+                            <div class="col-lg-8">
+                                <!-- Personal-Information -->
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title mt-0 mb-3">My Information</h4>                                 
+                                        <hr/>
+                                        <div class="text-left">
+                                            <p class="text-muted"><strong>First Name :</strong> <span class="ml-2" th:text="${#authentication.getPrincipal().firstName}">Michael A. Franklin</span></p>
+											<p class="text-muted"><strong>Last Name :</strong> <span class="ml-2" th:text="${#authentication.getPrincipal().lastName}">Michael A. Franklin</span></p>
+											<p class="text-muted"><strong>User Name :</strong> <span class="ml-2" th:text="${#authentication.getPrincipal().user.userName}">Michael A. Franklin</span></p>
+                                            <p class="text-muted"><strong>Mobile :</strong><span class="ml-2" th:text="${#authentication.getPrincipal().user.phoneNumber}">(+12) 123 1234 567</span></p>
+
+                                            <p class="text-muted"><strong>Email :</strong> <span class="ml-2" th:text="${#authentication.getPrincipal().user.email}">coderthemes@gmail.com</span></p>
+
+                                            <p class="text-muted"><strong>Status :</strong> <span class="ml-2" th:text="${#authentication.getPrincipal().user.enabled} ? 'Active' : 'Inactive'">USA</span></p>
+                                            <p class="text-muted mb-0"><strong>Elsewhere :</strong>
+                                                <a class="d-inline-block ml-2 text-muted" title="" data-placement="top" data-toggle="tooltip" href="" data-original-title="Facebook"><i class="mdi mdi-facebook"></i></a>
+                                                <a class="d-inline-block ml-2 text-muted" title="" data-placement="top" data-toggle="tooltip" href="" data-original-title="Twitter"><i class="mdi mdi-twitter"></i></a>
+                                                <a class="d-inline-block ml-2 text-muted" title="" data-placement="top" data-toggle="tooltip" href="" data-original-title="Skype"><i class="mdi mdi-skype"></i></a>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Personal-Information -->
+
+                                <!-- Toll free number box-->
+                                <div class="card text-white bg-info overflow-hidden">
+                                    <div class="card-body">
+                                        <div class="toll-free-box text-center">
+                                            <h4> <i class="mdi mdi-deskphone"></i> Mobile : [[${#authentication.getPrincipal().user.phoneNumber}]]</h4>
+                                        </div>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                                <!-- End Toll free number box-->
+                            </div> <!-- end col-->
+
+                            <div class="col-lg-4">
+
+                            </div>
+                            <!-- end col -->
+
+                        </div>
+                        <!-- end row -->
+					<!-- end table -->
+
+				</div>
+				<!-- container -->
+			</div>
+			<!-- content -->
+			<!-- Footer Start -->
+			<footer class="footer" th:replace="fragment/general :: footer">
+			</footer>
+			<!-- end Footer -->
+
+		</div>
+
+		<!-- ============================================================== -->
+		<!-- End Page content -->
+		<!-- ============================================================== -->
+	</div>
+	<!-- END wrapper -->
+	<div th:replace="fragment/general :: scriptLibraries(~{::script})">
+        <!-- third party js -->
+        <script th:src="@{/assets/js/vendor/Chart.bundle.min.js}" src="#"></script>
+        <!-- third party js ends -->
+        <!-- demo app -->
+        <script th:src="@{/assets/js/pages/demo.profile.js}" src="#"></script>
+        <!-- end demo js-->
+	</div>
+
+</body>
+</html>

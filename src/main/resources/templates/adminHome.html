@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragment/general :: baseHead(~{::title}, ~{::link})">
+<title>Dhcircle | Admin- User registration</title>
+<!-- placeholder for additional links -->
+<link />
+</head>
+
+<body class="loading"
+	data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+	<!-- Begin page -->
+	<div class="wrapper">
+		<!-- ========== Left Sidebar Start ========== -->
+		<div class="left-side-menu"
+			th:replace="fragment/general ::sideMenu(${'home'},${'home'})">
+		</div>
+		<!-- Left Sidebar End -->
+
+		<!-- ============================================================== -->
+		<!-- Start Page Content here -->
+		<!-- ============================================================== -->
+
+		<div class="content-page">
+			<div class="content">
+				<!-- Topbar Start -->
+				<div class="navbar-custom" th:replace="fragment/general ::topBar">
+				</div>
+				<!-- end Topbar -->
+
+				<!-- Start Content-->
+				<div class="container-fluid">
+
+					<!-- start page title -->
+					<div class="row">
+						<div class="col-12">
+							<div class="page-title-box">
+								<div class="page-title-right">
+									<ol class="breadcrumb m-0">
+										<li class="breadcrumb-item">
+										<a th:href="@{/admin/home}" href="#">Dashboard</a></li>
+										<li class="breadcrumb-item active">Home</li>
+									</ol>
+								</div>
+								<h4 class="page-title">Welcome To Home</h4>
+							</div>
+						</div>
+					</div>
+					<!-- end page title -->
+
+					<div class="row">
+
+					</div>
+					<!-- end row-->
+
+				</div>
+				<!-- container -->
+
+			</div>
+			<!-- content -->
+
+			<!-- Footer Start -->
+			<footer class="footer" th:replace="fragment/general :: footer">
+			</footer>
+			<!-- end Footer -->
+
+		</div>
+
+		<!-- ============================================================== -->
+		<!-- End Page content -->
+		<!-- ============================================================== -->
+
+
+	</div>
+	<!-- END wrapper -->
+
+	<div th:replace="fragment/general :: scriptLibraries(~{::script})">
+		<!-- Apex js -->
+		<script th:src="@{/assets/js/vendor/apexcharts.min.js}"></script>
+		<!-- Todo js -->
+		<script th:src="@{/assets/js/ui/component.todo.js}"></script>
+
+		<!-- demo app -->
+		<script th:src="@{/assets/js/pages/demo.dashboard-crm.js}"></script>
+		<!-- end demo js-->
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragment/general :: baseHead(~{::title}, ~{::link})">
+<title>Dhcircle | Admin- User registration</title>
+    <!-- placeholder for additional links -->
+ <link />
+</head>
+
+<body class="loading"
+	data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+	<!-- Begin page -->
+	<div class="wrapper">
+		<!-- ========== Left Sidebar Start ========== -->
+		<div class="left-side-menu" th:replace="fragment/general ::sideMenu(${'user'},${'paidSubscriber'})">
+		</div>
+		<!-- Left Sidebar End -->
+
+		<!-- ============================================================== -->
+		<!-- Start Page Content here -->
+		<!-- ============================================================== -->
+
+		<div class="content-page">
+			<div class="content">
+				<!-- Topbar Start -->
+				<div class="navbar-custom" th:replace="fragment/general ::topBar">
+				</div>
+				<!-- end Topbar -->
+				<!-- Start Content-->
+				<div class="container-fluid">
+
+					<!-- start page title -->
+					<div class="row">
+						<div class="col-12">
+							<div class="page-title-box">
+								<div class="page-title-right">
+									<ol class="breadcrumb m-0">
+										<li class="breadcrumb-item">
+											<a th:href="@{/admin/home}" href="#">Dashborad</a>
+										</li>
+										<li class="breadcrumb-item">
+											<a th:href="@{/admin/user-list}" href="#">User List</a>
+										</li>
+										<li class="breadcrumb-item active">Create User</li>
+									</ol>
+								</div>
+								<h4 class="page-title">Register</h4>
+
+							</div>
+						</div>
+					</div>
+					<!-- end page title -->
+					<div class="row">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-body">
+									<!-- Billing Content-->
+									<div class="tab-pane show active" id="billing-information">
+										<div class="row">
+											<div class="col-lg-2"></div>
+											<div class="col-lg-8">
+												<h4 class="mt-2">User Registration</h4>
+												<p class="text-muted mb-4">Fill the form below to create
+													a user</p>
+
+												<form enctype="multipart/form-data"
+													id="user-registration-form" name="user-registration-form">
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="billing-first-name">First Name <span
+																	class="text-danger">*</span>
+																</label> <input class="form-control" type="text"
+																	placeholder="Enter your first name" id="firstName"
+																	name="firstName" />
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="billing-last-name">Last Name <span
+																	class="text-danger">*</span>
+																</label> <input class="form-control" type="text"
+																	placeholder="Enter your last name" id="lastName"
+																	name="lastName" />
+															</div>
+														</div>
+													</div>
+													<!-- end row -->
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="email">Email Address <span
+																	class="text-danger">*</span>
+																</label> <input class="form-control" type="email"
+																	placeholder="Enter your email" id="email" name="email" />
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="phoneNumber">Phone <span
+																	class="text-danger">*</span></label> <input
+																	class="form-control" type="text"
+																	placeholder="(xx) xxx xxxx xxx" id="phoneNumber"
+																	name="phoneNumber" />
+															</div>
+														</div>
+													</div>
+													<!-- end row -->
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="password">Password <span
+																	class="text-danger">*</span>
+																</label> <input type="password" id="password" name="password"
+																	class="form-control" placeholder="********" value="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="confirmPassword"> ConfirmPassword <span
+																	class="text-danger">*</span>
+																</label> <input type="password" id="confirmPassword"
+																	name="confirmPassword" class="form-control"
+																	placeholder="********" value="">
+															</div>
+														</div>
+													</div>
+													<!-- end row -->
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="userName">User Name <span
+																	class="text-danger">*</span></label> <input
+																	class="form-control" type="text"
+																	placeholder="Enter your user name" id="userName"
+																	name="userName" />
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="userRole">Select Role <span
+																	class="text-danger">*</span>
+																</label> <select id="userRole" name="userRole"
+																	class="custom-select mb-3">
+																	<option sec:authorize="hasAnyAuthority('SUPER ADMIN')" value="SUPER ADMIN" selected>Super
+																		Admin</option>
+																	<option value="ADMIN">Admin</option>
+																	<option value="SUBSCRIBER">Subscriber</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div id="user-create-success-msg"></div>
+													<!-- end row -->
+													<div class="row">
+														<div class="col-md-6">
+															<button class="btn btn-primary" type="submit">Create
+																User</button>
+
+														</div>
+														<div class="col-md-6"></div>
+													</div>
+													<!-- end row -->
+												</form>
+											</div>
+											<div class="col-lg-2"></div>
+										</div>
+										<!-- end row-->
+									</div>
+									<!-- End User Information Content-->
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- container -->
+
+			</div>
+			<!-- content -->
+
+			<!-- Footer Start -->
+			<footer class="footer" th:replace="fragment/general :: footer">
+			</footer>
+			<!-- end Footer -->
+
+		</div>
+
+		<!-- ============================================================== -->
+		<!-- End Page content -->
+		<!-- ============================================================== -->
+
+
+	</div>
+	<!-- END wrapper -->
+
+	<div th:replace="fragment/general :: scriptLibraries(~{::script})">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+		<script th:src="@{/js/admin/ajax/user-registration.js}"></script>
+	</div>
+
+
+</body>
+</html>

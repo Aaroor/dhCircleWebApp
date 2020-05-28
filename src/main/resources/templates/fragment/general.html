@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:fragment="baseHead(title, links)">
+<meta charset="utf-8" />
+<title th:replace="${title}">Starter Page | Dhcircle Admin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+	content="A fully featured admin theme which can be used to build CRM, CMS, etc."
+	name="description" />
+<meta content="Aarooran" name="author" />
+
+<link rel="stylesheet" th:href="@{/assets/images/favicon.ico}" type="image/x-icon" />
+<!-- App css -->
+<link rel="stylesheet" th:href="@{/assets/css/icons.min.css}"
+	type="text/css" />
+<link rel="stylesheet" th:href="@{/assets/css/app.min.css}"
+	type="text/css" id="light-style" />
+<link rel="stylesheet" th:href="@{/assets/css/app-dark.min.css}"
+	type="text/css" id="dark-style" />
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<!-- third party css -->
+<link th:href="@{/assets/css/vendor/dataTables.bootstrap4.css}" href="#"
+	rel="stylesheet" type="text/css" />
+ <link th:href="@{/assets/css/vendor/responsive.bootstrap4.css}" href="#"
+	rel="stylesheet" type="text/css" />
+<!-- third party css end -->
+<!-- placeholder for additional links -->
+<th:block th:replace="${links}" />
+</head>
+<body>
+
+
+	<!-- ========== Left Sidebar Start ========== -->
+	<div class="left-side-menu" th:fragment="sideMenu(tabName,subTabName)">
+
+		<!-- LOGO -->
+		<a href="index.html" class="logo text-center logo-light"> <span
+			class="logo-lg"> <img th:src="@{/assets/images/logo.png}"
+				src="#" alt="" height="16">
+		</span> <span class="logo-sm"> <img
+				th:src="@{/assets/images/logo_sm.png}" src="#" alt="" height="16">
+		</span>
+		</a>
+
+		<!-- LOGO -->
+		<a href="index.html" class="logo text-center logo-dark"> <span
+			class="logo-lg"> <img th:src="@{/assets/images/logo-dark.png}"
+				src="#" alt="" height="16">
+		</span> <span class="logo-sm"> <img
+				th:src="@{/assets/images/logo_sm_dark.png}" src="#" alt=""
+				height="16">
+		</span>
+		</a>
+
+		<div class="h-100" id="left-side-menu-container" data-simplebar>
+
+			<!--- Sidemenu -->
+			<ul class="metismenu side-nav">
+
+				<li class="side-nav-title side-nav-item">Navigation</li>
+
+				<li th:classappend="${tabName == 'home'} ? 'side-nav-item mm-active':'side-nav-item'">
+				<a th:href="@{/admin/home}" href="#"
+					class="side-nav-link"> <i class="uil-home-alt"></i> <span>
+							Dashboards </span></a></li>
+
+				<li class="side-nav-title side-nav-item">Functionalities</li>
+
+				<li
+					th:classappend="${tabName == 'user'} ? 'side-nav-item mm-active':'side-nav-item'"><a
+					href="javascript: void(0);" class="side-nav-link"
+					th:attr="aria-expanded=''+${tabName == 'user'} ? 'true':'false'">
+						<i class="fa fa-users" aria-hidden="true"></i> <span> Users </span> <span
+						class="menu-arrow"></span>
+				</a>
+					<ul class="side-nav-second-level" aria-expanded="false">
+						<li th:classappend="${subTabName == 'userList'} ? 'active'">
+							<a th:href="@{/admin/user-list}" href="#">User List</a>
+						</li>
+						<li th:classappend="${subTabName == 'createUser'} ? 'active'"><a th:href="@{/registration}" href="#">System User</a></li>
+						<li th:classappend="${subTabName == 'paidSubscriber'} ? 'active'"><a th:href="@{/admin/add-paid-subscriber}" href="#">Paid Subscriber</a></li>
+						<li th:classappend="${subTabName == 'subscriber'} ? 'active'"><a th:href="@{/admin/add-subscriber}" href="#">Subscriber</a></li>
+					</ul>
+				</li>
+				<li th:classappend="${tabName == 'profile'} ? 'side-nav-item mm-active':'side-nav-item'">
+				<a th:href="@{/admin/user-profile}" href="#"
+					class="side-nav-link"> <i class="mdi mdi-account-circle mr-1"></i> <span>
+							My Profile </span></a>
+				</li>
+			</ul>
+
+			<!-- Help Box -->
+			<div class="help-box text-white text-center">
+				<a href="javascript: void(0);"
+					class="float-right close-btn text-white"> <i
+					class="mdi mdi-close"></i>
+				</a> <img th:src="@{/assets/images/help-icon.svg}" src="#" height="90"
+					alt="Helper Icon Image" />
+				<h5 class="mt-3">Unlimited Access</h5>
+				<p class="mb-3">Upgrade to plan to get access to unlimited
+					reports</p>
+				<a href="javascript: void(0);" class="btn btn-outline-light btn-sm">Upgrade</a>
+			</div>
+			<!-- end Help Box -->
+			<!-- End Sidebar -->
+
+			<div class="clearfix"></div>
+
+		</div>
+		<!-- Sidebar -left -->
+
+	</div>
+	<!-- Left Sidebar End -->
+
+	<!-- Top bar Start -->
+	<div class="navbar-custom" th:fragment="topBar">
+		<ul class="list-unstyled topbar-right-menu float-right mb-0">
+			<!--<li class="notification-list"><a
+				class="nav-link right-bar-toggle" href="javascript: void(0);"> <i
+					class="dripicons-gear noti-icon"></i>
+			</a></li>-->
+
+			<li class="dropdown notification-list topbar-dropdown"><a
+				class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown"
+				href="#" role="button" aria-haspopup="false" aria-expanded="false">
+					<img th:src="@{/assets/images/flags/us.jpg}" src="#"
+					alt="user-image" class="mr-0 mr-sm-1" height="12"> <span
+					class="align-middle d-none d-sm-inline-block">English</span> <i
+					class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
+			</a>
+				<div
+					class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu">
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<img th:src="@{/assets/images/flags/germany.jpg}" src="#"
+						alt="user-image" class="mr-1" height="12"> <span
+						class="align-middle">German</span>
+					</a>
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<img th:src="@{/assets/images/flags/italy.jpg}" src="#"
+						alt="user-image" class="mr-1" height="12"> <span
+						class="align-middle">Italian</span>
+					</a>
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<img th:src="@{/assets/images/flags/spain.jpg}" src="#"
+						alt="user-image" class="mr-1" height="12"> <span
+						class="align-middle">Spanish</span>
+					</a>
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<img th:src="@{/assets/images/flags/russia.jpg}" src="#"
+						alt="user-image" class="mr-1" height="12"> <span
+						class="align-middle">Russian</span>
+					</a>
+
+				</div></li>
+
+			<li class="dropdown notification-list"><a
+				class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown"
+				href="#" role="button" aria-haspopup="false" aria-expanded="false">
+					<i class="dripicons-bell noti-icon"></i> <span
+					class="noti-icon-badge"></span>
+			</a>
+				<div
+					class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
+
+					<!-- item-->
+					<div class="dropdown-item noti-title">
+						<h5 class="m-0">
+							<span class="float-right"> <a href="javascript: void(0);"
+								class="text-dark"> <small>Clear All</small>
+							</a>
+							</span>Notification
+						</h5>
+					</div>
+
+					<div style="max-height: 230px;" data-simplebar>
+						<!-- item-->
+						<a href="javascript:void(0);" class="dropdown-item notify-item">
+							<div class="notify-icon bg-primary">
+								<i class="mdi mdi-comment-account-outline"></i>
+							</div>
+							<p class="notify-details">
+								Caleb Flakelar commented on Admin <small class="text-muted">1
+									min ago</small>
+							</p>
+						</a>
+
+						<!-- item-->
+						<a href="javascript:void(0);" class="dropdown-item notify-item">
+							<div class="notify-icon bg-info">
+								<i class="mdi mdi-account-plus"></i>
+							</div>
+							<p class="notify-details">
+								New user registered. <small class="text-muted">5 hours
+									ago</small>
+							</p>
+						</a>
+
+						<!-- item-->
+						<a href="javascript:void(0);" class="dropdown-item notify-item">
+							<div class="notify-icon">
+								<img th:src="@{/assets/images/users/avatar-2.jpg}" src="#"
+									class="img-fluid rounded-circle" alt="" />
+							</div>
+							<p class="notify-details">Cristina Pride</p>
+							<p class="text-muted mb-0 user-msg">
+								<small>Hi, How are you? What about our next meeting</small>
+							</p>
+						</a>
+
+						<!-- item-->
+						<a href="javascript:void(0);" class="dropdown-item notify-item">
+							<div class="notify-icon bg-primary">
+								<i class="mdi mdi-comment-account-outline"></i>
+							</div>
+							<p class="notify-details">
+								Caleb Flakelar commented on Admin <small class="text-muted">4
+									days ago</small>
+							</p>
+						</a>
+
+						<!-- item-->
+						<a href="javascript:void(0);" class="dropdown-item notify-item">
+							<div class="notify-icon">
+								<img th:src="@{/assets/images/users/avatar-4.jpg}" src="#"
+									class="img-fluid rounded-circle" alt="" />
+							</div>
+							<p class="notify-details">Karen Robinson</p>
+							<p class="text-muted mb-0 user-msg">
+								<small>Wow ! this admin looks good and awesome design</small>
+							</p>
+						</a>
+
+						<!-- item-->
+						<a href="javascript:void(0);" class="dropdown-item notify-item">
+							<div class="notify-icon bg-info">
+								<i class="mdi mdi-heart"></i>
+							</div>
+							<p class="notify-details">
+								Carlos Crouch liked <b>Admin</b> <small class="text-muted">13
+									days ago</small>
+							</p>
+						</a>
+					</div>
+
+					<!-- All-->
+					<a href="javascript:void(0);"
+						class="dropdown-item text-center text-primary notify-item notify-all">
+						View All </a>
+
+				</div></li>
+
+			<li class="dropdown notification-list"><a
+				class="nav-link dropdown-toggle nav-user arrow-none mr-0"
+				data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+				aria-expanded="false"> <span class="account-user-avatar">
+						<img th:src="@{/assets/images/users/avatar-1.jpg}" src="#"
+						alt="user-image" class="rounded-circle">
+				</span> 
+				<span sec:authorize="isAuthenticated()"> 
+					<span class="account-user-name" th:text="${#authentication.getPrincipal().firstName+' '+#authentication.getPrincipal().lastName}">Aarooran Kanthasamy</span>
+					<span class="account-position" th:each="authority : ${#authentication.getAuthorities()}" th:text="${#strings.capitalizeWords(#strings.toLowerCase(authority.getAuthority()))}">Super Admin</span>
+				</span>
+			</a>
+				<div
+					class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+					<!-- item-->
+					<div class=" dropdown-header noti-title">
+						<h6 class="text-overflow m-0">Welcome !</h6>
+					</div>
+
+					<!-- item-->
+					<a th:href="@{/admin/user-profile}" href="#" class="dropdown-item notify-item">
+						<i class="mdi mdi-account-circle mr-1"></i> <span>My
+							Profile</span>
+					</a>
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<i class="mdi mdi-account-edit mr-1"></i> <span>Settings</span>
+					</a>
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<i class="mdi mdi-lifebuoy mr-1"></i> <span>Support</span>
+					</a>
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<i class="mdi mdi-lock-outline mr-1"></i> <span>Lock Screen</span>
+					</a>
+
+					<!-- item-->
+					<a th:href="@{/logout}" href="#" class="dropdown-item notify-item">
+						<i class="mdi mdi-logout mr-1"></i> <span>Logout</span>
+					</a>
+
+				</div></li>
+
+		</ul>
+		<button class="button-menu-mobile open-left disable-btn">
+			<i class="mdi mdi-menu"></i>
+		</button>
+		<div class="app-search">
+			<form>
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search...">
+					<span class="mdi mdi-magnify"></span>
+					<div class="input-group-append">
+						<button class="btn btn-primary" type="submit">Search</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- Top bar End -->
+
+	<!-- Footer Start -->
+	<footer class="footer" th:fragment="footer">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6">2020 © dhCircle - dhCircle.com</div>
+				<div class="col-md-6">
+					<div class="text-md-right footer-links d-none d-md-block">
+						<a href="javascript: void(0);">About</a> <a
+							href="javascript: void(0);">Support</a> <a
+							href="javascript: void(0);">Contact Us</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- end Footer -->
+	<dev th:fragment="scriptLibraries(script)"> 
+	<!-- bundle --> 
+	<script th:src="@{/assets/js/vendor.min.js}" src="#"></script> 
+	<script th:src="@{/assets/js/app.min.js}" src="#"></script> 
+	<script th:src="@{/js/icon/fa-fa-icon.js}" src="#"></script>
+	<!-- third party js -->
+	<th:block th:replace="${script}" /> </dev>
+</body>
+</html>
