@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragment/general :: baseHead(~{::title}, ~{::link})">
-<title>Dhcircle | Admin- Userlist</title>
+<title>Dhcircle | Admin- Course Category List</title>
 <!-- placeholder for additional links -->
 <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" type="text/css" />-->
 <link rel="stylesheet"
@@ -19,7 +19,7 @@
 	<div class="wrapper">
 		<!-- ========== Left Sidebar Start ========== -->
 		<div class="left-side-menu"
-			th:replace="fragment/general ::sideMenu(${'user'},${'userList'})">
+			th:replace="fragment/general ::sideMenu(${'courses'},${'category-list'})">
 		</div>
 		<!-- Left Sidebar End -->
 
@@ -46,7 +46,7 @@
 								<div class="card-body">
 									<div class="table-responsive">
 										<table class="table table-centered w-100 dt-responsive nowrap"
-											id="user-datatable">
+											id="course-category-datatable">
 											<thead class="thead-light">
 												<tr>
 													<th class="all" style="width: 20px;">
@@ -56,11 +56,10 @@
 																class="custom-control-label" for="customCheck1">&nbsp;</label>
 														</div>
 													</th>
-													<th><b>User Name</b></th>
-													<th>Phone</th>
-													<th>Email</th>
+													<th><b>Category Name</b></th>
+													<th>Created Date</th>
+													<th>Update Date</th>
 													<th>Active</th>
-													<th>Role</th>
 													<th>Action</th>
 												</tr>
 											</thead>
@@ -231,7 +230,7 @@
 			src="#"></script>
 
 
-		<script th:src="@{/js/admin/jQuery-tables/user-table.js}" src="#"></script>
+		<script th:src="@{/js/admin/jQuery-tables/courses/category-table.js}" src="#"></script>
 		<script
 			src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
 		<script

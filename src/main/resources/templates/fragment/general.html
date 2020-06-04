@@ -65,6 +65,23 @@
 							Dashboards </span></a></li>
 
 				<li class="side-nav-title side-nav-item">Functionalities</li>
+				
+				<li
+					th:classappend="${tabName == 'courses'} ? 'side-nav-item mm-active':'side-nav-item'">
+					<a
+					href="javascript: void(0);" class="side-nav-link"
+					th:attr="aria-expanded=''+${tabName == 'user'} ? 'true':'false'">
+						<i class="fa fa-book" aria-hidden="true"></i></i> <span> Courses </span> <span
+						class="menu-arrow"></span>
+				    </a>
+					<ul class="side-nav-second-level" aria-expanded="false">
+						<li th:classappend="${subTabName == 'category-list'} ? 'active'">
+							<a th:href="@{/admin/category-list}" href="#">Category List</a>
+						</li>
+						<li th:classappend="${subTabName == 'course-list'} ? 'active'"><a th:href="@{/registration}" href="#">Course List</a></li>
+						<li th:classappend="${subTabName == 'course-management'} ? 'active'"><a th:href="@{/admin/course-management}" href="#">Course Management</a></li>
+					</ul>
+				</li>
 
 				<li
 					th:classappend="${tabName == 'user'} ? 'side-nav-item mm-active':'side-nav-item'"><a

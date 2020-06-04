@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragment/general :: baseHead(~{::title}, ~{::link})">
+<title>Dhcircle | Admin- User registration</title>
+<!-- placeholder for additional links -->
+<link />
+</head>
+
+<body class="loading"
+	data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+	<!-- Begin page -->
+	<div class="wrapper">
+		<!-- ========== Left Sidebar Start ========== -->
+		<div class="left-side-menu"
+			th:replace="fragment/general ::sideMenu(${'courses'},${'course-management'})">
+		</div>
+		<!-- Left Sidebar End -->
+
+		<!-- ============================================================== -->
+		<!-- Start Page Content here -->
+		<!-- ============================================================== -->
+
+		<div class="content-page">
+			<div class="content">
+				<!-- Topbar Start -->
+				<div class="navbar-custom" th:replace="fragment/general ::topBar">
+				</div>
+				<!-- end Topbar -->
+				<!-- Start Content-->
+				<div class="container-fluid">
+
+					<!-- start page title -->
+					<div class="row">
+						<div class="col-12">
+							<div class="page-title-box">
+								<div class="page-title-right">
+									<ol class="breadcrumb m-0">
+										<li class="breadcrumb-item"><a th:href="@{/admin/home}"
+											href="#">Dashborad</a></li>
+										<li class="breadcrumb-item"><a
+											th:href="@{/admin/user-list}" href="#">User List</a></li>
+										<li class="breadcrumb-item active">Create User</li>
+									</ol>
+								</div>
+								<h4 class="page-title">Register</h4>
+
+							</div>
+						</div>
+					</div>
+					<!-- end page title -->
+					<div class="row">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-body">
+
+									<!-- Checkout Steps -->
+									<ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
+										<li class="nav-item"><a href="#billing-information"
+											data-toggle="tab" aria-expanded="false"
+											class="nav-link rounded-0 active"> <i
+												class="mdi mdi-account-circle font-18"></i> <span
+												class="d-none d-lg-block">Add Course Materials</span>
+										</a></li>
+										<li class="nav-item"><a href="#course-topic"
+											data-toggle="tab" aria-expanded="true"
+											class="nav-link rounded-0"> <i
+												class="mdi mdi-truck-fast font-18"></i> <span
+												class="d-none d-lg-block">Add Course Topic</span>
+										</a></li>
+										<li class="nav-item"><a href="#resource-type"
+											data-toggle="tab" aria-expanded="true"
+											class="nav-link rounded-0"> <i
+												class="mdi mdi-truck-fast font-18"></i> <span
+												class="d-none d-lg-block">Resource Type</span>
+										</a></li>
+										<li class="nav-item"><a href="#payment-information"
+											data-toggle="tab" aria-expanded="false"
+											class="nav-link rounded-0"> <i
+												class="mdi mdi-cash-multiple font-18"></i> <span
+												class="d-none d-lg-block">Add Courses</span>
+										</a></li>
+									</ul>
+
+									<!-- Steps Information -->
+									<div class="tab-content">
+
+										<!-- Billing Content-->
+										<div class="tab-pane show active" id="billing-information">
+											<div class="row">
+												<div class="col-lg-12">
+													<h4 class="mt-2">Course Materials</h4>
+
+													<p class="text-muted mb-4">Fill the form below in order
+														to send you the order's invoice.</p>
+													<!-- File Upload -->
+													<form action="/" method="post" class="dropzone"
+														id="myAwesomeDropzone" data-plugin="dropzone"
+														data-previews-container="#file-previews"
+														data-upload-preview-template="#uploadPreviewTemplate">
+														<!-- file preview template -->
+														<div class="d-none" id="uploadPreviewTemplate">
+															<div class="card mt-1 mb-0 shadow-none border">
+																<div class="p-2">
+																	<div class="row align-items-center">
+																		<div class="col-auto">
+																			<img data-dz-thumbnail src="#"
+																				class="avatar-sm rounded bg-light" alt="">
+																		</div>
+																		<div class="col pl-0">
+																			<a href="javascript:void(0);"
+																				class="text-muted font-weight-bold" data-dz-name></a>
+																			<p class="mb-0" data-dz-size></p>
+																		</div>
+																		<div class="col-auto">
+																			<!-- Button -->
+																			<a href="" class="btn btn-link btn-lg text-muted"
+																				data-dz-remove> <i class="dripicons-cross"></i>
+																			</a>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label for="billing-first-name">Select Course
+																		Topic</label>
+																	<!-- Single Select -->
+																	<select class="form-control select2"
+																		data-toggle="select2">
+																		<option>Select</option>
+																		<option value="AK">Alaska</option>
+																		<option value="HI">Hawaii</option>
+																		<option value="CA">California</option>
+																		<option value="NV">Nevada</option>
+																		<option value="OR">Oregon</option>
+																		<option value="WA">Washington</option>
+																	</select>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label for="billing-last-name">Select Course</label> <select
+																		class="form-control select2" data-toggle="select2">
+																		<option>Select</option>
+																		<option value="AK">Alaska</option>
+																		<option value="HI">Hawaii</option>
+																		<option value="CA">California</option>
+																		<option value="NV">Nevada</option>
+																		<option value="OR">Oregon</option>
+																		<option value="WA">Washington</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-12">
+																<div class="form-group">
+																	<label for="billing-address">Address</label> <input
+																		class="form-control" type="text"
+																		placeholder="Enter full address" id="billing-address">
+																</div>
+															</div>
+														</div>
+
+														<div class="fallback">
+															<input name="file" type="file" multiple />
+														</div>
+
+														<div class="dz-message needsclick">
+															<i class="h1 text-muted dripicons-cloud-upload"></i>
+															<h3>Drop files here or click to upload.</h3>
+															<span class="text-muted font-13">(This is just a
+																demo dropzone. Selected files are <strong>not</strong>
+																actually uploaded.)
+															</span>
+														</div>
+														<!-- Preview -->
+														<div class="dropzone-previews mt-3" id="file-previews"></div>
+
+														<!-- end row -->
+														<div class="row mt-4">
+															<div class="col-sm-6">
+																<a href="apps-ecommerce-shopping-cart.html"
+																	class="btn text-muted d-none d-sm-inline-block btn-link font-weight-semibold">
+																	<i class="mdi mdi-arrow-left"></i> Back to Resource
+																	List
+																</a>
+															</div>
+															<!-- end col -->
+															<div class="col-sm-6">
+																<div class="text-sm-right">
+																	<a href="apps-ecommerce-checkout.html"
+																		class="btn btn-danger"> <i
+																		class="mdi mdi-truck-fast mr-1"></i> Upload
+																	</a>
+																</div>
+															</div>
+															<!-- end col -->
+														</div>
+														<!-- end row -->
+													</form>
+												</div>
+
+											</div>
+											<!-- end row-->
+										</div>
+										<!-- End Billing Information Content-->
+
+										<!-- Resource Content-->
+										<div class="tab-pane" id="resource-type">
+											<div class="row">
+												<div class="col-lg-12">
+													<h4 class="mt-4">Add New Resource Type</h4>
+
+													<p class="text-muted mb-4">Fill the form below so we
+														can send you the order's invoice.</p>
+
+													<form>
+														<div class="row">
+															<div class="col-12">
+																<div class="form-group">
+																	<label for="topicName">Course Topic</label> <input
+																		class="form-control" type="text"
+																		placeholder="Enter course topic" id="resource-type"
+																		name="resource-type">
+																</div>
+															</div>
+														</div>
+														<!-- end row -->
+														<div class="row mt-4">
+															<div class="col-sm-6">
+																<a href="apps-ecommerce-shopping-cart.html"
+																	class="btn text-muted d-none d-sm-inline-block btn-link font-weight-semibold">
+																	<i class="mdi mdi-arrow-left"></i> Back to List
+																	Cart
+																</a>
+															</div>
+															<!-- end col -->
+															<div class="col-sm-6">
+																<div class="text-sm-right">
+																	<a href="apps-ecommerce-checkout.html"
+																		class="btn btn-danger"> <i
+																		class="mdi mdi-cash-multiple mr-1"></i> Add resource
+																		type
+																	</a>
+																</div>
+															</div>
+															<!-- end col -->
+														</div>
+														<!-- end row -->
+													</form>
+												</div>
+											</div>
+											<!-- end row-->
+										</div>
+										<!-- End Shipping Information Content-->
+										<!-- Shipping Content-->
+										<div class="tab-pane" id="course-topic">
+											<div class="row">
+												<div class="col-lg-12">
+													<h4 class="mt-4">Add New Course Topic</h4>
+
+													<p class="text-muted mb-4">Fill the form below in order to create you the course category.</p>
+
+													<form id="add-course-topic-form" name="add-course-topic-form">
+														<div class="row">
+															<div class="col-12">
+																<div class="form-group">
+																	<label for="topicName">Course Topic</label> <input
+																		class="form-control" type="text"
+																		placeholder="Enter course topic" id="topicName"
+																		name="topicName">
+																</div>
+															</div>
+														</div>
+														<!-- end row -->
+														<div class="row mt-4">
+															<div class="col-sm-6">
+																<a href="apps-ecommerce-shopping-cart.html"
+																	class="btn text-muted d-none d-sm-inline-block btn-link font-weight-semibold">
+																	<i class="mdi mdi-arrow-left"></i> Back to List
+																</a>
+															</div>
+															<!-- end col -->
+															<div class="col-sm-6">
+																<div class="text-sm-right">
+																	<button type="submit"
+																		class="btn btn-danger"> <i
+																		class="mdi mdi-cash-multiple mr-1"></i> Create new
+																		topic
+																	</button>
+																</div>
+															</div>
+															<!-- end col -->
+														</div>
+														<!-- end row -->
+													</form>
+												</div>
+											</div>
+											<!-- end row-->
+										</div>
+										<!-- End Shipping Information Content-->
+
+										<!-- Payment Content-->
+										<div class="tab-pane" id="payment-information">
+											<div class="col-lg-12">
+												<h4 class="mt-2">Course information</h4>
+
+												<p class="text-muted mb-4">Fill the form below in order
+													to send you the order's invoice.</p>
+
+												<form>
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="billing-first-name">Course Name</label> <input
+																	class="form-control" type="text"
+																	placeholder="Enter course name"
+																	id="billing-first-name">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="billing-last-name">Select Course
+																	Category</label>
+																	<select class="form-control select2"
+																		data-toggle="select2">
+																		<option>Select Category</option>
+																		<option value="AK">Alaska</option>
+																		<option value="HI">Hawaii</option>
+																		<option value="CA">California</option>
+																		<option value="NV">Nevada</option>
+																		<option value="OR">Oregon</option>
+																		<option value="WA">Washington</option>
+																	</select>
+															</div>
+														</div>
+													</div>
+													<!-- end row -->
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="billing-email-address">Course fee <span
+																	class="text-danger">*</span>
+																</label> <input class="form-control" type="text"
+																	placeholder="00.00" id="billing-email-address">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="billing-phone">Select subscription period <span
+																	class="text-danger">*</span></label> <select
+																	class="custom-select mb-3">
+																	<option selected>Select Period</option>
+																	<option value="1">One Month</option>
+																	<option value="3">Three Month</option>
+																	<option value="6">Six Month</option>
+																	<option value="12">One Year</option>
+																	<option value="24">Two Years</option>
+																</select>
+															</div>
+														</div>
+													</div>
+
+													<!-- end row -->
+													<div class="row">
+														<div class="col-md-12">
+															<div class="form-group">
+																<label for="example-textarea">Course
+																	description:</label>
+																<textarea class="form-control" id="example-textarea"
+																	rows="3" placeholder="Write some note.."></textarea>
+															</div>
+														</div>
+													</div>
+													<!-- end row -->
+
+													<div class="row mt-4">
+														<div class="col-sm-6">
+															<a href="apps-ecommerce-shopping-cart.html"
+																class="btn text-muted d-none d-sm-inline-block btn-link font-weight-semibold">
+																<i class="mdi mdi-arrow-left"></i> Back to Shopping Cart
+															</a>
+														</div>
+														<!-- end col -->
+														<div class="col-sm-6">
+															<div class="text-sm-right">
+																<a href="apps-ecommerce-checkout.html"
+																	class="btn btn-danger"> <i
+																	class="mdi mdi-truck-fast mr-1"></i> Proceed to
+																	Shipping
+																</a>
+															</div>
+														</div>
+														<!-- end col -->
+													</div>
+													<!-- end row -->
+												</form>
+											</div>
+										</div>
+										<!-- End Payment Information Content-->
+
+									</div>
+									<!-- end tab content-->
+
+								</div>
+								<!-- end card-body-->
+							</div>
+							<!-- end card-->
+						</div>
+						<!-- end col -->
+					</div>
+					<!-- end row-->
+
+				</div>
+				<!-- container -->
+
+			</div>
+			<!-- content -->
+
+			<!-- Footer Start -->
+			<footer class="footer" th:replace="fragment/general :: footer">
+			</footer>
+			<!-- end Footer -->
+
+		</div>
+
+		<!-- ============================================================== -->
+		<!-- End Page content -->
+		<!-- ============================================================== -->
+
+
+	</div>
+	<!-- END wrapper -->
+
+	<div th:replace="fragment/general :: scriptLibraries(~{::script})">
+	    
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+		<script th:src="@{/js/admin/ajax/user-registration.js}"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script th:src="@{/json/courses/add-course-topic.js}" src="#"></script>
+		<!-- plugin js -->
+		<script th:src="@{/assets/js/vendor/dropzone.min.js}" src="#"></script>
+		<!-- init js -->
+		<script th:src="@{/assets/js/ui/component.fileupload.js}" src="#"></script>
+	</div>
+
+
+</body>
+</html>

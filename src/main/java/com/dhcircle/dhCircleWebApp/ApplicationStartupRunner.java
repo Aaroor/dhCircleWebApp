@@ -22,18 +22,18 @@ public class ApplicationStartupRunner implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 //		System.out.println("Start");
-		List<Role> lRole = new ArrayList<Role>();
-		Role role = new Role();
-		role.setRole("SUBSCRIBER");
-		lRole.add(role);
-		Role role1 = new Role();
-		role1.setRole("ADMIN");
-		lRole.add(role1);
-		Role role2 = new Role();
-		role2.setRole("SUPERADMIN");
-		lRole.add(role2);
-		roleRepo.saveAll(lRole);
-//		roleRepo.save(role);
+//		List<Role> lRole = new ArrayList<Role>();
+//		Role role = new Role();
+//		role.setRole("SUBSCRIBER");
+//		lRole.add(role);
+//		Role role1 = new Role();
+//		role1.setRole("ADMIN");
+//		lRole.add(role1);
+//		Role role2 = new Role();
+//		role2.setRole("SUPERADMIN");
+//		lRole.add(role2);
+//		roleRepo.saveAll(lRole);
+////		roleRepo.save(role);
 //		System.out.println("End");
 		//System.out.println(userRepo.findByEmail("aarooran.kanthasamy@team4.cms.lk"));
 		//User u =userRepo.findByEmail("aarooran.kanthasamy@team4.cms.lk");

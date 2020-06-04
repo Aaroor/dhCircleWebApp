@@ -1,7 +1,7 @@
 $(document).ready(function() {
     "use strict";
     
-    $("#user-datatable").DataTable({
+    $("#course-category-datatable").DataTable({
     	dom: 'Blfrtip',
           buttons: [
           	{ 
@@ -16,7 +16,7 @@ $(document).ready(function() {
                           page : 'all', // 'all', 'current'
                           search : 'none' // 'none', 'applied', 'removed'
                       },
-                      columns: [1,2,3,5]
+                      columns: [1,2,3]
                  }	
               },
           	{ 
@@ -31,7 +31,7 @@ $(document).ready(function() {
                           page : 'all', // 'all', 'current'
                           search : 'none' // 'none', 'applied', 'removed'
                       },
-                      columns: [1,2,3,5]
+                      columns: [1,2,3]
                  }
             },
           	{ 
@@ -46,7 +46,7 @@ $(document).ready(function() {
                           page : 'all', // 'all', 'current'
                           search : 'none' // 'none', 'applied', 'removed'
                       },
-                      columns: [1,2,3,5]
+                      columns: [1,2,3]
                 }	
           	},
           	{ 
@@ -69,7 +69,7 @@ $(document).ready(function() {
                           page : 'all', // 'all', 'current'
                           search : 'none' // 'none', 'applied', 'removed'
                       },
-                      columns: [1,2,3,5]
+                      columns: [1,2,3]
                   }	
           	},
           	{ 
@@ -85,7 +85,7 @@ $(document).ready(function() {
                           page : 'all', // 'all', 'current'
                           search : 'none' // 'none', 'applied', 'removed'
                       },
-                      columns: [1,2,3,5]
+                      columns: [1,2,3]
                   }	
           	}
           ],  
@@ -99,7 +99,7 @@ $(document).ready(function() {
         },
         pageLength: 5,
         ajax: {
-	        url: '/api/admin/all-user-list',
+	        url: '/api/admin/all-course-category-list',
 	        dataSrc: ''
 	    },
         columns: [{
@@ -115,13 +115,24 @@ $(document).ready(function() {
             }
         },{
             orderable: !0,
-            data: 'userName'
+            data: 'topicName'
         }, {
             orderable: !0,
-            data: 'phoneNumber'
+            data: 'createdAt'
         }, {
             orderable: !0,
-            data: 'email'
+            data: 'updatedAt',
+            render: function(data, type, full, meta) {
+                var date = new Date(data);
+                var month = date.getMonth() + 1;
+                if(type == 'display'){
+                	return (month.toString().length > 1 ? month : "0" + month) + "/" + date.getDate() + "/" + date.getFullYear()+" : "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+                }
+                else{
+                	return data;
+                }
+            }
+        
         }, {
             orderable: !0,
             data: 'enabled',
@@ -142,12 +153,6 @@ $(document).ready(function() {
             }
         },
         {
-            orderable: !0,
-            data: 'roles',
-            render: function ( data,type,row,meta){
-            	return data[0].role;
-            }
-        },{
         	orderable:!1,
         	data: 'id',
         	className:"table-action",
