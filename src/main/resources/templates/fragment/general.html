@@ -11,18 +11,19 @@
 
 <link rel="stylesheet" th:href="@{/assets/images/favicon.ico}" type="image/x-icon" />
 <!-- App css -->
+<link rel="stylesheet" th:href="@{/jquery/data-table/font-awesome.min.css}" href="#" type="text/css" />
 <link rel="stylesheet" th:href="@{/assets/css/icons.min.css}"
 	type="text/css" />
 <link rel="stylesheet" th:href="@{/assets/css/app.min.css}"
 	type="text/css" id="light-style" />
-<link rel="stylesheet" th:href="@{/assets/css/app-dark.min.css}"
-	type="text/css" id="dark-style" />
+<!-- link rel="stylesheet" th:href="@{/assets/css/app-dark.min.css}"
+	type="text/css" id="dark-style" />-->
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <!-- third party css -->
-<link th:href="@{/assets/css/vendor/dataTables.bootstrap4.css}" href="#"
-	rel="stylesheet" type="text/css" />
- <link th:href="@{/assets/css/vendor/responsive.bootstrap4.css}" href="#"
-	rel="stylesheet" type="text/css" />
+<!-- <link th:href="@{/assets/css/vendor/dataTables.bootstrap4.css}" href="#"
+	rel="stylesheet" type="text/css" />-->
+ <!-- <link th:href="@{/assets/css/vendor/responsive.bootstrap4.css}" href="#"
+	rel="stylesheet" type="text/css" />-->
 <!-- third party css end -->
 <!-- placeholder for additional links -->
 <th:block th:replace="${links}" />
@@ -70,7 +71,7 @@
 					th:classappend="${tabName == 'courses'} ? 'side-nav-item mm-active':'side-nav-item'">
 					<a
 					href="javascript: void(0);" class="side-nav-link"
-					th:attr="aria-expanded=''+${tabName == 'user'} ? 'true':'false'">
+					th:attr="aria-expanded=''+${tabName == 'courses'} ? 'true':'false'">
 						<i class="fa fa-book" aria-hidden="true"></i></i> <span> Courses </span> <span
 						class="menu-arrow"></span>
 				    </a>
@@ -78,7 +79,7 @@
 						<li th:classappend="${subTabName == 'category-list'} ? 'active'">
 							<a th:href="@{/admin/category-list}" href="#">Category List</a>
 						</li>
-						<li th:classappend="${subTabName == 'course-list'} ? 'active'"><a th:href="@{/registration}" href="#">Course List</a></li>
+						<li th:classappend="${subTabName == 'course-list'} ? 'active'"><a  href="#">Course List</a></li>
 						<li th:classappend="${subTabName == 'course-management'} ? 'active'"><a th:href="@{/admin/course-management}" href="#">Course Management</a></li>
 					</ul>
 				</li>
@@ -359,7 +360,7 @@
 	<!-- bundle --> 
 	<script th:src="@{/assets/js/vendor.min.js}" src="#"></script> 
 	<script th:src="@{/assets/js/app.min.js}" src="#"></script> 
-	<script th:src="@{/js/icon/fa-fa-icon.js}" src="#"></script>
+	<!-- <script th:src="@{/js/icon/fa-fa-icon.js}" src="#"></script>-->
 	<!-- third party js -->
 	<th:block th:replace="${script}" /> </dev>
 </body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="fragment/general :: baseHead(~{::title}, ~{::link})">
-<title>Dhcircle | Admin- User registration</title>
+<title>Dhcircle | Admin- Subscriber registration</title>
     <!-- placeholder for additional links -->
  <link />
 </head>
@@ -194,9 +194,9 @@
 	<!-- END wrapper -->
 
 	<div th:replace="fragment/general :: scriptLibraries(~{::script})">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+		<script th:src="@{/jquery/jquery.validation.min.js}" src="#"></script>
 		<script th:src="@{/js/admin/ajax/subscriber-registration.js}"></script>
-		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script th:src="@{/jquery/data-table/sweetalert.min.js}" src="#"></script>
 	</div>
 
 
